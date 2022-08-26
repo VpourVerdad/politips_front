@@ -1,0 +1,25 @@
+html{
+  min-height: 100vh;
+  background: linear-gradient(to bottom, #FA9F4C, #FE6955, #B616A6);
+}
+img{
+  border-radius: 3rem;
+}
+.App-logo{
+  width: 150px;
+  position: absolute;
+  top: 110px;
+  left: 85px;
+
+}
+
+span{
+  background-color: white;
+  height: 5px;
+  display: block;
+  border-radius: 100px;
+  width: 135px;
+  top: 34rem;
+  position: absolute;
+  left: 94px;
+}
