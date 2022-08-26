@@ -1,5 +1,5 @@
 import React from 'react';
-import logo from './logo.svg';
+import logoReact from './logo.svg';
 import './css/reset.css'
 import './css/helpers.css'
 import './App.css';
@@ -9,7 +9,7 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
+        <img src={logo} className="App-logo" alt="logoReact" />
         
         <Navbar></Navbar>
       </header>
