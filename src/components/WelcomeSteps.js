@@ -6,37 +6,35 @@ import {useState} from "react";
 const WelcomeSteps = () => {
 
         const Words=[
-            {id:0, value:"Bienvenue sur Politips !"},
-            {id:1, value:"Deviens un super citoyen !"},
-            {id:2, value:"Qu'est-ce que t'attends ?"},];
+            "Bienvenue sur Politips !",
+            "Deviens un super citoyen !",
+            "Qu'est-ce que t'attends ?"
+        ];
         
-            const textWords=[
-            {id:0, value:"pose un nouveau regard sur le monde en apprenant à le comprendre"},
-            {id:1, value:"le savoir, c'est le pouvoir', alors on prend ça très au sérieux! n'attends plus et commence à apprendre !"},
-            {id:2, value:"On t'as dit de commencer, arrête de perdre du temps et fonce"},
-            ]
-
-        const [WordsData,setWordsData]=useState(Words[0].value)
-        const [textWordsData,setTextWordsData]=useState(textWords[0].value)
-
+        const textWords=[
+            "pose un nouveau regard sur le monde en apprenant à le comprendre",
+            "le savoir, c'est le pouvoir', alors on prend ça très au sérieux! n'attends plus et commence à apprendre !",
+            "On t'as dit de commencer, arrête de perdre du temps et fonce"
+        ];
+// initilisation de l'etat 
+        const [WordsDataIndex,setTextWordsDataIndex] = useState(0);
+// function 
         const handleClick=(index)=>{
-            // console.log(index)
-            const wordSlider=Words[index].value;
-            setWordsData(wordSlider)
-            const wordTextSlider=textWords[index].value;
-            setTextWordsData(wordTextSlider)
+            setTextWordsDataIndex(index);
+        }
+        const handleChange=()=>{
+            setTextWordsDataIndex($prevState => $prevState+1);
         }
         return (
             <div className="text-welcome">
-                <h2>{WordsData}</h2>
-                <p>{textWordsData}</p>
+                <h2>{Words[WordsDataIndex]}</h2>
+                <p>{textWords[WordsDataIndex]}</p>
                 <div className="bars-steps">
                 {Words.map((data,i)=>
-                <span className="bar" onClick={()=>handleClick(i)}></span>)}
+                i===WordsDataIndex ? <span key={i} className="bar bar_active" onClick={()=>handleClick(i)}></span> : <span key={i} className="bar" onClick={()=>handleClick(i)}></span>)
+                }
                 </div>
-                <div className="img-arrow">
-                <img src={arrow} className="arrow" alt="arrow"/>
-                </div>
+                {WordsDataIndex < Words.length-1 ? <div className="img-arrow"><img src={arrow} onClick={handleChange} className="arrow" alt="arrow"/></div> : <div className="go-link"> <a href="#">C'est parti !</a></div>}              
             </div>
         );
     }
