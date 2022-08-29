@@ -8,7 +8,7 @@ class Navbar extends React.Component{
 
     constructor(props){
         super(props);
-        this.data =  [Politique,Economie,Ecologie];
+        this.data = this.props.theme;
         this.state={
             currentTheme : 0
         };
@@ -46,9 +46,9 @@ class Navbar extends React.Component{
             <div className="container">
                 <div className="gallery-container">
                     <div className="gallery">
-                        <img id="theme-0" className="theme" src={Politique}></img>
-                        <img id="theme-1" className="theme" src={Economie}></img>
-                        <img id="theme-2" className="theme" src={Ecologie}></img>
+                        {this.data.map((element,index) => 
+                            <img id={'theme'+index} className="theme" src={element.name}></img>
+                        )}
                     </div>
                 </div>
                 
