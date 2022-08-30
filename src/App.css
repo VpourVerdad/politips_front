@@ -1,25 +1,85 @@
-html{
+/* poppins-regular - latin */
+@font-face {
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 400;
+  src: local(''),
+       url('./fonts/poppins-v20-latin-regular.woff2') format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */
+       url('./fonts/poppins-v20-latin-regular.woff') format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+}
+
+/* poppins-700 - latin */
+@font-face {
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 700;
+  src: local(''),
+       url('./fonts/poppins-v20-latin-700.woff2') format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */
+       url('./fonts/poppins-v20-latin-700.woff') format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+}
+:root {
+  --orange: #FF9051;
+  --white: #ffffff;
+  --black:  #000000;
+  --grey: #A7A7A7;
+  --bleu: #280A82;
+}
+body{
   min-height: 100vh;
-  background: linear-gradient(to bottom, #FA9F4C, #FE6955, #B616A6);
+  background: linear-gradient(to bottom, #eac23b, #FE6955, #8d07c4);
+  font-family: 'Poppins';
 }
-img{
-  border-radius: 3rem;
+
+h2{
+  font-weight: 700;
+  color: var(--bleu);
 }
+
+
+.App-container{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 300px; 
+}
+
 .App-logo{
-  width: 150px;
+  width: 120px;
   position: absolute;
-  top: 110px;
-  left: 85px;
-
+  top: 20%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border: 5px solid #f2f1f1;
+  border-radius: 6rem;
 }
 
-span{
-  background-color: white;
-  height: 5px;
-  display: block;
-  border-radius: 100px;
-  width: 135px;
-  top: 34rem;
+span.bottom-bar{
+  background-color: var(--white);
+  height: 0.4rem;
+  width: 10rem;
+  top: 98%;
   position: absolute;
-  left: 94px;
+  border-radius: 5rem;
+}
+
+.big-circle{
+  background-color: #0000;
+  position: absolute;
+  width: 2.5rem;
+  height: 2.5rem;
+  right: 79%;
+  top: 10%;
+  border-radius: 50%;
+  outline: 1px solid #fff;
+}
+
+.circle{
+  background-color: #0000;
+  position: absolute;
+  width: .4rem;
+  height: .4rem;
+  left: 74%;
+  top: 29%;
+  border-radius: 50%;
+  outline: 1px solid #fff;
 }
