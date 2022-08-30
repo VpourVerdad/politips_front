@@ -18,7 +18,7 @@ div.text-welcome{
 }
 
 p{
-    color: #A7A7A7;
+    color: var(--grey);
 }
 .bars-steps{
     display:flex;
@@ -26,26 +26,26 @@ p{
     gap: 1.5rem;
 }
 .bar{
-    background-color: black;
+    background-color: var(--black);
     height: 0.5rem;
     width: 2rem;
     top: 85%;
     border-radius: 25px;
-    background-color:#A7A7A7
+    background-color: var(--grey)
 }
 .bar_active{
-    background-color: #FF9051;
+    background-color: var(--orange);
 }
 
 .img-arrow{
-    background-color: #FF9051;
+    background-color: var(--orange);
     width: 8rem;
     height: 8rem;
     border-radius: 4rem;
     display: flex;
     justify-content: center;
     position: absolute;
-    filter: drop-shadow(0px 0px 8px #FF9051);
+    filter: drop-shadow(0px 0px 8px var(--orange));
     top: 100%;
     transform: translateY(-50%)
 }
@@ -54,15 +54,23 @@ p{
 }
 
 .go-link{
-    background-color: #FF9051;
-    width: 13rem;
-    height: 7rem;
+    background-color: var(--orange);
+    width: 14rem;
+    height: 6.5rem;
     border-radius: 1rem;
     display: flex;
     justify-content: center;
     position: absolute;
-    filter: drop-shadow(0px 0px 8px #FF9051);
-    top: 100%;
+    top: 101%;
     transform: translateY(-50%);
     flex-direction: column;
+    border-style: solid;
+    border-color: rgb(247, 246, 246);
+    box-shadow: #a70fe0 0px 20px 15px 0px;
+    
+}
+.go-link a{
+    text-decoration: none;
+    font-weight: 700;
+    color: var(--white);
 }

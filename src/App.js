@@ -10,6 +10,8 @@ import "./styles/helpers.css";
 function App() {
   return (
     <div className="App-container">
+    <span className="big-circle"></span>
+    <span className="circle"></span>
     <img src={logo} className="App-logo" alt="logo"/>
     <WelcomeSteps />
     <Navbar />
