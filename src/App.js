@@ -2,7 +2,7 @@ import Category from './components/Category';
 import React from "react";
 import logo from "./assets/big_politips.png";
 import "./App.css";
-import WelcomeSteps from "./components/WelcomeSteps";
+import HomeSteps from "./components/HomeSteps";
 import Navbar from "./components/Navbar";
 import "./styles/reset.css";
 import "./styles/helpers.css";
@@ -14,8 +14,7 @@ function App() {
     <span className="big-circle"></span>
     <span className="circle"></span>
     <img src={logo} className="App-logo" alt="logo"/>
-    <WelcomeSteps />
-    <Navbar />
+    <HomeSteps />
     <span className='bottom-bar'></span>
     </div>
   );

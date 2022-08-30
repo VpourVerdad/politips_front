@@ -1,9 +1,9 @@
 import React from "react";
-import "../styles/WelcomeSteps.css";
+import "../styles/homeSteps.css";
 import arrow from "../assets/arrow-right-solid.svg";
 import {useState} from "react";
 
-const WelcomeSteps = () => {
+const HomeSteps = () => {
 
         const Words=[
             "Bienvenue sur Politips !",
@@ -17,7 +17,7 @@ const WelcomeSteps = () => {
             "On t'as dit de commencer, arrête de perdre du temps et fonce"
         ];
 // initilisation de l'etat 
-        const [WordsDataIndex,setTextWordsDataIndex] = useState(0);
+        const [WordsDataIndex, setTextWordsDataIndex] = useState(0);
 // function 
         const handleClick=(index)=>{
             setTextWordsDataIndex(index);
@@ -38,4 +38,4 @@ const WelcomeSteps = () => {
             </div>
         );
     }
-    export default WelcomeSteps;
+    export default HomeSteps;
