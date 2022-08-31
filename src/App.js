@@ -6,6 +6,8 @@ import HomeSteps from "./components/HomeSteps";
 import Navbar from "./components/Navbar";
 import "./styles/reset.css";
 import "./styles/helpers.css";
+import Api from "./Api.js"
+
 
 
 function App() {
@@ -16,6 +18,7 @@ function App() {
     <img src={logo} className="App-logo" alt="logo"/>
     <HomeSteps />
     <span className='bottom-bar'></span>
+    <Api />
     </div>
   );
 }

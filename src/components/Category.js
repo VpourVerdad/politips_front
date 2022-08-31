@@ -1,6 +1,5 @@
 import React from "react";
 import Politique from '../assets/Politique.png'
-import '../css/Category.css'
 
 class Category extends React.Component{
 
