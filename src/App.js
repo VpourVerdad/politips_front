@@ -6,11 +6,15 @@ import HomeSteps from "./components/HomeSteps";
 import Navbar from "./components/Navbar";
 import "./styles/reset.css";
 import "./styles/helpers.css";
-import Api from "./Api.js"
-
-
+import ApiFetching from "./ApiFetching.js";
 
 function App() {
+
+  ApiFetching.apiAll();
+  ApiFetching.apiTheme();
+  ApiFetching.apiCategory();
+  ApiFetching.apiCategoryId(1); 
+
   return (
     <div className="App-container">
     <span className="big-circle"></span>
@@ -18,7 +22,6 @@ function App() {
     <img src={logo} className="App-logo" alt="logo"/>
     <HomeSteps />
     <span className='bottom-bar'></span>
-    <Api />
     </div>
   );
 }
