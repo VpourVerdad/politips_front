@@ -5,7 +5,7 @@ import '../styles/Category.css'
 class Category extends React.Component{
 
     constructor(props){
-        super(props);
+        super(props); 
         this.data = [
             {
                 'name' : "Politique",
