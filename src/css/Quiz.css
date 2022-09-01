@@ -79,8 +79,11 @@
 }
 
 .explanation{
-    display: block;
+    display: grid;
+    grid-template-rows: 1fr 15rem; 
     position: absolute;
+    align-items: center;
+    justify-content: center;
     text-align: center;
     margin: 5vh 10vw ;
     padding: 5rem;
@@ -90,4 +93,5 @@
     border: 2px solid black;
     border-radius: 5rem;
     z-index: 100;
+    transition: all 5s;
 }

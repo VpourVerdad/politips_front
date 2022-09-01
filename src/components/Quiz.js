@@ -28,7 +28,9 @@ class Quiz extends React.Component{
             "answer" : 'Test 3',
             "isCorrect" : false
         }
-        ]
+        ];
+
+        this.explanation = "test test test test test test test test test test test test test test test test test test test test test test test test  test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test testtest test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test testtest test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test"
         
     }
 
@@ -70,7 +72,7 @@ class Quiz extends React.Component{
         })
         setTimeout(() => {
             this.addExplanation()
-        }, 1000);
+        }, 1500);
     }
 
     addExplanation = () => {
@@ -88,10 +90,10 @@ class Quiz extends React.Component{
     render(){
         return(
             <div className="container-quiz">
-                {this.state.showExplanation?<div className="explanation" onClick={this.closeExplanation}><p>test test test</p></div>:""}
+                {this.state.showExplanation?<div className="explanation" ><p>{this.explanation}</p><button className="next-button" onClick={this.closeExplanation}>Question suivante !</button></div>:""}
                 <div className="container-question">
                     <img className="illustration-question" src={Politique}></img>
-                    <h3>Test</h3>
+                    <h3>Test</h3> 
                     {/* <h2>{this.quiz.question}</h2> */}
                 </div>
                 <div className="container-choices">
