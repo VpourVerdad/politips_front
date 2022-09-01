@@ -2,7 +2,7 @@ import React from "react";
 import Politique from "../assets/Politique.png"
 import Ecologie from "../assets/Ecologie.png"
 import Economie from "../assets/Economie.webp"
-import "../css/Navbar.css"
+import "../styles/Navbar.css"
 
 class Navbar extends React.Component{
 

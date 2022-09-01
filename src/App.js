@@ -1,11 +1,11 @@
+import React from 'react';
+import './styles/reset.css'
+import './styles/helpers.css'
+import './App.css';
+import WelcomeSteps from './components/WelcomeSteps';
+import Navbar from './components/Navbar';
 import Category from './components/Category';
-import React from "react";
-import logo from "./assets/big_politips.png";
-import "./App.css";
-import HomeSteps from "./components/HomeSteps";
-import Navbar from "./components/Navbar";
-import "./styles/reset.css";
-import "./styles/helpers.css";
+import Quiz from './components/Quiz';
 
 
 function App() {
