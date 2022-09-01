@@ -19,9 +19,8 @@ class Category extends React.Component{
             <div className="grid-category">
                 {this.data.map((element,index) => 
                 <div className ="category-container" style={{ backgroundImage: element.image }}>
-                   <Link to={element.name}>{element.name}</Link>
+                   <Link to={element.name+"/1"}>{element.name}</Link>
                 </div>
-                   
                 )}
             </div>
             )}

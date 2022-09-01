@@ -90,7 +90,7 @@ class Quiz extends React.Component{
     render(){
         return(
             <div className="container-quiz">
-                {this.state.showExplanation?<div className="explanation" ><p>{this.explanation}</p><button className="next-button" onClick={this.closeExplanation}>Question suivante !</button></div>:""}
+                {this.state.showExplanation?<div className="explanation" ><p>{this.explanation}</p><button className="next-button" onClick={() => {document.location = document.location}}>Question suivante !</button></div>:""}
                 <div className="container-question">
                     <img className="illustration-question" src={Politique}></img>
                     <h3>Test</h3> 
