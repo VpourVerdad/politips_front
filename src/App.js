@@ -1,6 +1,6 @@
 import React from 'react';
-import './css/reset.css'
-import './css/helpers.css'
+import './styles/reset.css'
+import './styles/helpers.css'
 import './App.css';
 import WelcomeSteps from './components/WelcomeSteps';
 import Navbar from './components/Navbar';

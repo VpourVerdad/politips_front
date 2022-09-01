@@ -1,6 +1,6 @@
 import React from "react";
 import Politique from '../assets/Politique.png'
-import '../css/Quiz.css'
+import '../styles/Quiz.css'
 
 class Quiz extends React.Component{
 
