@@ -3,9 +3,7 @@ import Politique from "../assets/Politique.png";
 import Ecologie from "../assets/Ecologie.png";
 import Economie from "../assets/Economie.webp";
 import "../styles/Navbar.css";
-import{
-    Link,
-} from "react-router-dom";
+
 
 
 class Navbar extends React.Component{
@@ -37,7 +35,6 @@ class Navbar extends React.Component{
 
     previousTheme = () => {
         this.data.forEach((element,index) => {
-            
             if(index === (this.state.currentTheme+this.data.length-1)%this.data.length){
                 document.querySelector('.gallery').style.transform = 'translateX('+(-100/this.data.length)*index+'%)';
                 document.querySelector('#theme'+index).style.opacity = 1;
@@ -55,7 +52,7 @@ class Navbar extends React.Component{
                 <div className="gallery-container">
                     <div className="gallery">
                         {this.data.map((element,index) => 
-                            <img id={'theme'+index} key={'theme'+index} className="theme" src={element.src} onClick={() => {document.location = document.location+element.name}}></img>
+                            <img id={'theme'+index} key={'theme'+index} alt={element.name} className="theme" src={element.src} onClick={() => {document.location = document.location+element.name}}></img>
                         )}
                     </div>
                 </div>
