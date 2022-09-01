@@ -7,9 +7,11 @@ img{
 }
 
 .App{
-  display: grid;
-  grid-template-columns: 1fr; 
-  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 300px; 
+  
   
 }
 
@@ -29,13 +31,4 @@ span{
   width: 135px;
   top: 34rem;
   position: absolute;
-  left: 94px;
-}
-
-.container{
-  display: grid;
-  grid-template-columns: 1fr;
-  align-items: center;
-  justify-content: center;
-  
 }
