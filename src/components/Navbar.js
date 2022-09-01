@@ -3,6 +3,7 @@ import Politique from "../assets/Politique.png";
 import Ecologie from "../assets/Ecologie.png";
 import Economie from "../assets/Economie.webp";
 import "../styles/Navbar.css";
+import { Link } from 'react-router-dom';
 
 
 
@@ -52,7 +53,7 @@ class Navbar extends React.Component{
                 <div className="gallery-container">
                     <div className="gallery">
                         {this.data.map((element,index) => 
-                            <img id={'theme'+index} key={'theme'+index} alt={element.name} className="theme" src={element.src} onClick={() => {document.location = document.location+element.name}}></img>
+                           <Link to={element.name}><img id={'theme'+index} key={'theme'+index} alt={element.name} className="theme" src={element.src}></img></Link>
                         )}
                     </div>
                 </div>
