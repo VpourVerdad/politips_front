@@ -3,10 +3,14 @@ import "../styles/homeSteps.css";
 import arrow from "../assets/arrow-right-solid.svg";
 import {useState} from "react";
 import {apiAll}from "../ApiFetching";
+import logo from '../assets/logo.png';
+import{
+    Link
+} from "react-router-dom";
 
 
 const HomeSteps = () => {
-
+    
         const Words=[
             "Bienvenue sur Politips !",
             "Deviens un super citoyen !",
@@ -28,16 +32,24 @@ const HomeSteps = () => {
             setTextWordsDataIndex($prevState => $prevState+1);
         }
         return (
-            <div className="text-welcome">
+            <div className="App-container">
+                <span className="big-circle"></span>
+                <span className="circle"></span>
+                <img src={logo} className="App-logo" alt="logo"/>
+                <div className="text-welcome">
                 <h2>{Words[WordsDataIndex]}</h2>
                 <p>{textWords[WordsDataIndex]}</p>
                 <div className="bars-steps">
-                {Words.map((data,i)=>
-                i===WordsDataIndex ? <span key={i} className="bar bar_active" onClick={()=>handleClick(i)}></span> : <span key={i} className="bar" onClick={()=>handleClick(i)}></span>)
-                }
+                    {Words.map((data,i)=>
+                    i===WordsDataIndex ? <span key={i} className="bar bar_active" onClick={()=>handleClick(i)}></span> : <span key={i} className="bar" onClick={()=>handleClick(i)}></span>)
+                    }
                 </div>
-                {WordsDataIndex < Words.length-1 ? <div className="img-arrow"><img src={arrow} onClick={handleChange} className="arrow" alt="arrow"/></div> : <div className="go-link"> <a href="#">C'est parti !</a></div>}              
+                {WordsDataIndex < Words.length-1 ? <div className="img-arrow"><img src={arrow} onClick={handleChange} className="arrow" alt="arrow"/></div> : <div className="go-link"> <Link to="/">C'est parti !</Link></div>}              
             </div>
+            <span className='bottom-bar'></span>
+            </div>
+
+            
         );
     }
     export default HomeSteps;
