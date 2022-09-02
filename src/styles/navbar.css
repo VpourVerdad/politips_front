@@ -1,0 +1,18 @@
+.gallery-container{
+       width: 50rem;
+       overflow: hidden;
+}
+
+.gallery{
+    transition: all 1s;
+    display: flex;
+    align-items: center;
+    width: 300%;
+    overflow: hidden;
+    
+}
+
+.theme{
+    min-width: 50rem;
+    min-height: 50rem;
+}

@@ -1,10 +1,10 @@
 import React from "react";
+
 import Politique from "../assets/Politique.png";
 import Ecologie from "../assets/Ecologie.png";
 import Economie from "../assets/Economie.webp";
 import "../styles/Navbar.css";
 import { Link } from 'react-router-dom';
-
 
 
 class Navbar extends React.Component{
@@ -16,7 +16,6 @@ class Navbar extends React.Component{
             currentTheme : 0
         };
     }
-
 
     nextTheme = () => {
         this.data.forEach((element,index) => {

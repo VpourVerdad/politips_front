@@ -2,10 +2,12 @@ import React from "react";
 import "../styles/homeSteps.css";
 import arrow from "../assets/arrow-right-solid.svg";
 import {useState} from "react";
+import {apiAll}from "../ApiFetching";
 import logo from '../assets/logo.png';
 import{
     Link
 } from "react-router-dom";
+
 
 const HomeSteps = () => {
     
