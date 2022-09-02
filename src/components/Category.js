@@ -1,6 +1,6 @@
 import React from "react";
 import Politique from '../assets/Politique.png'
-import '../styles/Category.css'
+import '../styles/category.css'
 import { Link } from "react-router-dom";
 
 class Category extends React.Component{
