@@ -2,21 +2,29 @@ import React from 'react';
 import './styles/reset.css'
 import './styles/helpers.css'
 import './App.css';
-import WelcomeSteps from './components/WelcomeSteps';
+import HomeSteps from './components/HomeSteps';
 import Navbar from './components/Navbar';
 import Category from './components/Category';
 import Quiz from './components/Quiz';
-
+import {
+  Routes,
+  Route
+} from "react-router-dom";
 
 function App() {
   return (
-    <div className="App-container">
-    <span className="big-circle"></span>
-    <span className="circle"></span>
-    <img src={logo} className="App-logo" alt="logo"/>
-    <HomeSteps />
-    <span className='bottom-bar'></span>
-    </div>
+        <Routes>
+          <Route path="/home" element={<HomeSteps/>}/>
+        
+          <Route path="/:theme" element={<Category/>}/>
+
+          <Route path="/:theme/:category" />
+
+          <Route path="/:theme/:category/:id" element={<Quiz/>}/>
+        
+          <Route path="/" element={<Navbar/>}/>
+        
+        </Routes>
   );
 }
 
