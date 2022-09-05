@@ -1,10 +1,12 @@
 .grid-category{
     display: grid;
     grid-template-columns: 1fr 1fr;
-
+    gap : 2rem;
+    margin: 5%;
+    padding: 1%;
 }
 
-.category-container{
+.category-item{
     display: flex;
     width: 10rem;
     height: 10rem;
@@ -14,4 +16,18 @@
     background-color: white;
     border: 2px #0066ff solid;
     border-radius: 1rem;
+}
+
+.container-category{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+@media (min-width: 1250px) { 
+    .grid-category{grid-template-columns: 1fr 1fr 1fr;}
+}
+
+@media (min-width: 1600px) { 
+    .grid-category{grid-template-columns: 1fr 1fr 1fr 1fr;}
 }

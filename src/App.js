@@ -14,22 +14,19 @@ import {
 
 function App() {
 
-  ApiFetching.apiAll();
-  ApiFetching.apiTheme();
-  ApiFetching.apiCategory();
-  ApiFetching.apiCategoryId(1); 
+  console.log(ApiFetching.apiCategory())
 
   return (
         <Routes>
           <Route path="/home" element={<HomeSteps/>}/>
         
-          <Route path="/:theme" element={<Category/>}/>
+          <Route path="/:theme"  element={<Category/>}/>
 
           <Route path="/:theme/:category" />
 
           <Route path="/:theme/:category/:id" element={<Quiz/>}/>
         
-          <Route path="/" element={<Navbar/>}/>
+          <Route path="/"  element={<Navbar/>}/>
         
         </Routes>
   );

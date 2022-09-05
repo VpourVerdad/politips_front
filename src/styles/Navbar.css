@@ -31,4 +31,5 @@
     min-height: 50rem;
     opacity: 1;
     transition: all .5s;
+    width: 500px;
 }
