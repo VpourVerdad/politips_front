@@ -8,8 +8,8 @@ import ApiFetching from "../ApiFetching";
 
 const Quiz = () => {
 
-    let { id } = useParams();
-   
+    const  {id} = useParams();
+    
 
     const [quizzes, setQuizzes] = useState([]);
     const [currentQuiz, setCurrentQuiz] = useState(0);
@@ -19,11 +19,12 @@ const Quiz = () => {
     
 
     useEffect(() => {
+        console.log(id)
         async function fetchData(){
             setQuizzes([...await ApiFetching.apiCategoryId(id)])
         }
         fetchData();
-    }, []);
+    }, [id]);
 
     const handleClick = (event) => {
         let userAnswer
@@ -75,8 +76,7 @@ const Quiz = () => {
     const closeExplanation = () => {
         setShowExplanation(false)
     }
-    
-    console.log(quizzes);
+
 
     return(
         <div className="container-quiz">

@@ -33,7 +33,7 @@ static async apiAll () {
   
   // à partir d'un id récupérer une catégorie
   static async apiCategoryId (id) {
-    const res = await axios.get('https://localhost:8000/api/theme/category/' + id)
+    const res = await axios.get('https://localhost:8000/api/theme/category/'+id)
     .catch((err) => console.log(err));
     return res.data;
   }
@@ -41,6 +41,12 @@ static async apiAll () {
   // à partir d'un id récupérer un quizz
   static async apiQuiz (id) {
     const res = await axios.get('https://localhost:8000/api/theme/category/quiz/' + id)
+    .catch((err) => console.log(err));
+    return res.data;
+  }
+
+  static async apiResults (id) {
+    const res = await axios.get('https://localhost:8000/api/results/' + id)
     .catch((err) => console.log(err));
     return res.data;
   }
@@ -62,6 +68,6 @@ static async apiAll () {
         .replace(/-+/g, '-'); // collapse dashes
 
     return str;
-}
+  }
 
 }
