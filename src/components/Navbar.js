@@ -15,7 +15,7 @@ const Navbar = (props) => {
     const [currentTheme, setCurrentTheme] = useState(0);
         
     const nextTheme = () => {
-        this.data.forEach((element,index) => {
+        themes.forEach((element,index) => {
             
             if(index === (currentTheme+1)%themes.length){
                 document.querySelector('.gallery').style.transform = 'translateX('+(-100/(themes.length))*index+'%)';
@@ -23,15 +23,13 @@ const Navbar = (props) => {
                 document.querySelector('#theme'+(index+themes.length-1)%themes.length).style.opacity = 0;
             }
         });
-        console.log(currentTheme)
         setCurrentTheme(
             (currentTheme+1)%themes.length
         )
-        console.log(currentTheme)
     }
 
     const previousTheme = () => {
-        this.data.forEach((element,index) => {
+        themes.forEach((element,index) => {
             if(index === (currentTheme+themes.length-1)%themes.length){
                 document.querySelector('.gallery').style.transform = 'translateX('+(-100/themes.length)*index+'%)';
                 document.querySelector('#theme'+index).style.opacity = 1;
@@ -46,10 +44,10 @@ const Navbar = (props) => {
     return(
         <div className="container">
             <div className="gallery-container">
-                <div className="gallery">
+                <div className="gallery" style={{width : 100*themes.length+"%"}}>
                     {themes.map((element,index) => 
                 
-                    <Link to={ApiFetching.string_to_slug(element.title)} state={{ categories : element.categories }} key={'link-theme'+index}><img id={'theme'+index} key={'theme'+index} alt={element.title} className="theme" src={Politique}></img></Link>
+                    <Link to={ApiFetching.string_to_slug(element.title)} state={{ categories : element.categories }} key={'link-theme'+index}><img id={'theme'+index} key={'theme'+index} alt={element.title} className="theme" src={Politique}></img><h2>{element.title}</h2></Link>
                     )}
                 </div>
             </div>
