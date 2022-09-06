@@ -1,5 +1,5 @@
 import React from "react";
-import {useState , useEffect} from "react";
+import {useState,} from "react";
 import Politique from "../assets/Politique.png";
 import Ecologie from "../assets/Ecologie.png";
 import Economie from "../assets/Economie.webp";
@@ -8,20 +8,11 @@ import { Link } from 'react-router-dom';
 import ApiFetching from  "../ApiFetching";
 
 
-const Navbar = () => {
+const Navbar = (props) => {
 
-    const [themes, setThemes] = useState([]);
+    const [themes, setThemes] = useState([...props.data]);
 
     const [currentTheme, setCurrentTheme] = useState(0);
-
-    
-
-    useEffect(() => {
-        async function fetchData(){
-            setThemes([...await ApiFetching.apiTheme()])
-        }
-        fetchData();
-    }, []);
         
     const nextTheme = () => {
         this.data.forEach((element,index) => {
@@ -57,8 +48,8 @@ const Navbar = () => {
             <div className="gallery-container">
                 <div className="gallery">
                     {themes.map((element,index) => 
-                    
-                    <Link to={ApiFetching.string_to_slug(element.title)} key={'link-theme'+index}><img id={'theme'+index} key={'theme'+index} alt={element.title} className="theme" src={Politique}></img></Link>
+                
+                    <Link to={ApiFetching.string_to_slug(element.title)} state={{ categories : element.categories }} key={'link-theme'+index}><img id={'theme'+index} key={'theme'+index} alt={element.title} className="theme" src={Politique}></img></Link>
                     )}
                 </div>
             </div>

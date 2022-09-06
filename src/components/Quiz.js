@@ -2,7 +2,7 @@ import React from "react";
 import {useState , useEffect} from "react";
 import Politique from '../assets/Politique.png'
 import '../styles/Quiz.css';
-import { useParams } from "react-router-dom";
+import { useParams, useLocation} from "react-router-dom";
 import ApiFetching from "../ApiFetching";
 
 
@@ -10,21 +10,15 @@ const Quiz = () => {
 
     const  {id} = useParams();
     
+    const location = useLocation();
 
-    const [quizzes, setQuizzes] = useState([]);
+    const [quizzes, setQuizzes] = useState(location.state.quizzes);
     const [currentQuiz, setCurrentQuiz] = useState(0);
     const [hasAnswered, setHasAnswered] = useState(false);
     const [showExplanation, setShowExplanation] = useState(false);
     const [userAnswer,setUserAnswer] = useState("");
     
-
-    useEffect(() => {
-        console.log(id)
-        async function fetchData(){
-            setQuizzes([...await ApiFetching.apiCategoryId(id)])
-        }
-        fetchData();
-    }, [id]);
+    
 
     const handleClick = (event) => {
         let userAnswer
