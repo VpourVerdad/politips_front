@@ -11,7 +11,6 @@ const Category = (props) => {
     const location = useLocation();
     const [category, setCategory] = useState(location.state.categories);
 
-    console.log(category)
 
     return(
         <div className="container-category">

@@ -4,11 +4,11 @@ import axios from 'axios'
 export default class ApiFetching {
 
     // récupérer la data de l'api 
-static async apiAll () {
-  const res = await axios.get('https://localhost:8000/api')
-  .catch((err) => console.log(err));
-  return res.data;
-}
+  static async apiAll () {
+    const res = await axios.get('https://localhost:8000/api')
+    .catch((err) => console.log(err));
+    return res.data;
+  }
 
     // récupérer les themes 
   static async apiTheme () {
@@ -45,8 +45,9 @@ static async apiAll () {
     return res.data;
   }
 
+  // récupérer les résultats d'une question à partir de l'id de la question
   static async apiResults (id) {
-    const res = await axios.get('https://localhost:8000/api/results/' + id)
+    const res = await axios.get('https://localhost:8000/api/result/' + id)
     .catch((err) => console.log(err));
     return res.data;
   }
@@ -68,6 +69,24 @@ static async apiAll () {
         .replace(/-+/g, '-'); // collapse dashes
 
     return str;
+  }
+
+  static shuffle(array) {
+    var m = array.length, t, i;
+  
+    // While there remain elements to shuffle…
+    while (m) {
+  
+      // Pick a remaining element…
+      i = Math.floor(Math.random() * m--);
+  
+      // And swap it with the current element.
+      t = array[m];
+      array[m] = array[i];
+      array[i] = t;
+    }
+    
+    return array;
   }
 
 }

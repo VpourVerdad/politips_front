@@ -28,9 +28,10 @@ function App() {
         }
           
       }
-      fetchData();
+      if(data.length === 0 ) {
+        fetchData();
+      }
     }, []);
-
 
   if (data.length !== 0){
     return (
@@ -40,7 +41,7 @@ function App() {
       
         <Route path="/:theme"  element={<Category data={data} />}/>
 
-        <Route path="/:theme/:category" />
+        <Route path="/results/:id" />
 
         <Route path="/:theme/:category/:id" element={<Quiz/>}/>
       
@@ -50,9 +51,11 @@ function App() {
     );
   }
   else{
-    <section class="waiting">
-        <div class="lds-ring"><div></div><div></div><div></div><div></div></div>
-    </section>
+    return(
+      <section className="waiting">
+        <div className="lds-ring"><div></div><div></div><div></div><div></div></div>
+      </section>
+    )
   }
  
 }
