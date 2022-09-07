@@ -1,114 +1,154 @@
 import React from "react";
+import {useState , useEffect, useCallback} from "react";
 import Politique from '../assets/Politique.png'
 import '../styles/Quiz.css';
-import { Link } from "react-router-dom";
+import { useParams, useLocation,useNavigate} from "react-router-dom";
+import ApiFetching from "../ApiFetching";
 
-class Quiz extends React.Component{
 
-    constructor(props){
-        super(props);
-        this.data = [
-            {
-                'name' : "Politique",
-                'image' : Politique
-            }
-        ];
-        this.state = {
-            'hasAnswered' : false,
-            'showExplanation' : false
-        }
-        this.choices = [{
-            "answer" : 'Test 1',
-            "isCorrect" : true
-        },
-        {
-            "answer" : 'Test 2',
-            "isCorrect" : false
-        },
-        {
-            "answer" : 'Test 3',
-            "isCorrect" : false
-        }
-        ];
+const Quiz = () => {
 
-        this.explanation = "test test test test test test test test test test test test test test test test test test test test test test test test  test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test testtest test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test testtest test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test"
+    const  {id} = useParams();
+    
+    const navigate = useNavigate();
+    const handleNav = useCallback(() => navigate('/', {replace: true}), [navigate]);  
+    const location = useLocation();
+
+   
+    const [quizzes, setQuizzes] = useState(location.state.quizzes);
+    const [question, setQuestion] = useState([]);
+    const [choices, setChoices] = useState([]);
+    const [explanation, setExplanation] = useState("Pas d'explications pour cette question");
+    const [currentQuiz, setCurrentQuiz] = useState(0);
+    const [hasAnswered, setHasAnswered] = useState(false);
+    const [showExplanation, setShowExplanation] = useState(false);
+    const [userAnswer, setUserAnswer] = useState('');
+    const [contentExplanationButton, setContentExplanationButton] = useState('Prochaine Question !');
+    
+    
+    const handleClick = (event) => {
         
-    }
-
-    handleClick = (event) => {
-        let userAnswer
         let choices = document.querySelectorAll('button');
         choices.forEach((element) => {
             element.classList.remove('choice')
             element.onclick = null;
             if (element === event.target){
-                element.classList.add('selected')
-                userAnswer = event.target.innerText                
+                setUserAnswer(event.target.innerText)     
             }
-            else{
-                element.classList.add('notChosen')
+            
+        })
+        setHasAnswered(true);
+       
+    }
+
+    useEffect(() => {
+    
+        async function fetchData(){
+          try {
+            const tempQuestion = (await ApiFetching.apiQuiz(quizzes[currentQuiz].id))
+            setChoices(ApiFetching.shuffle(tempQuestion.choices))
+            setQuestion(tempQuestion)
+          } catch (error) {
+            console.error(error);
+          }
+            
+        }
+        console.log("test")
+        fetchData();
+      }, [currentQuiz]);
+
+
+    useEffect(() => {
+        if (hasAnswered){
+            setTimeout(() => {
+                checkAnswer()
+            }, 1000);
+        }
+    }, [userAnswer]);
+
+    
+
+
+    const nextQuestion = () =>{
+        setHasAnswered(false)
+        setQuestion('')
+        setUserAnswer('')
+        closeExplanation();
+        console.log(currentQuiz,quizzes.length)
+        setCurrentQuiz(currentQuiz+1)
+        if (currentQuiz +2 === quizzes.length){
+            setContentExplanationButton('Retourner au menu des thèmes !')
+        }
+        if (currentQuiz+1 === quizzes.length){
+            
+            handleNav();
+        }
+        
+            
+        
+    }
+
+    const checkAnswer = async () => {
+        let choicesHTMLElement = document.querySelectorAll('button');
+        const correctAnswer = await ApiFetching.apiResults(quizzes[currentQuiz].id)
+        setExplanation( await correctAnswer[0].explanation)
+        choicesHTMLElement.forEach(async (element,index)=>{
+            
+            if (choices[index].id === await correctAnswer[0].id){
+                element.classList.add('correctAnswer')
+            }
+            else if (element.innerText === userAnswer && choices[index].id !== await correctAnswer[0].id){
+                
+                element.classList.add('wrongAnswer')
             }
             
         })
         setTimeout(() => {
-            this.checkAnswer()
-        }, 1000);
-
-        this.setState({
-            'hasAnswered' : true,
-            'userAnswer' : userAnswer
-        })
-        
-    }
-
-    checkAnswer = () => {
-        let choices = document.querySelectorAll('button');
-        choices.forEach((element,index)=>{
-            if (this.choices[index].isCorrect){
-                element.classList.add('correctAnswer')
-            }
-            if (element.innerText === this.state.userAnswer && !this.choices[index].isCorrect){
-                element.classList.add('wrongAnswer')
-            }
-        })
-        setTimeout(() => {
-            this.addExplanation()
+            addExplanation()
         }, 1500);
     }
 
-    addExplanation = () => {
-        this.setState({
-            'showExplanation' : true
-        })
+    const addExplanation = () => {
+        setShowExplanation(true)
     }
 
-    closeExplanation = () => {
-        this.setState({
-            'showExplanation' : false
-        })
+    const closeExplanation = () => {
+        setShowExplanation(false)
     }
 
-    render(){
+    
+
+
+    if (question.length === 0){
+        return(
+            <section className="waiting">
+                <div className="lds-ring"><div></div><div></div><div></div><div></div></div>
+            </section>
+        )
+    }
+    else {
+
         return(
             <div className="container-quiz">
-                {this.state.showExplanation?<div className="explanation" ><p>{this.explanation}</p><Link to={''}>Question suivante !</Link></div>:""}
+                
+                {showExplanation?<div className="explanation" ><p>{explanation}</p><button onClick={nextQuestion}>{contentExplanationButton}</button></div>:""}
                 <div className="container-question">
                     <img alt="Politique" className="illustration-question" src={Politique}></img>
-                    <h3>Test</h3> 
+                    <h3>{question.question}</h3> 
                     {/* <h2>{this.quiz.question}</h2> */}
                 </div>
                 <div className="container-choices">
-                    {this.choices.map( (element,index) =>{
+                    {question.choices.map( (element,index) =>{
                         
-                        if(!this.state.hasAnswered){
+                        if(!hasAnswered){
                             return(
-                                <button className="choice" key={'choice-'+index} onClick={this.handleClick}>
+                                <button className="choice" key={'choice-'+index} onClick={handleClick}>
                                     {element.answer}
                                 </button>
                             )
                         }
                         else{
-                            if(element.answer === this.state.userAnswer){
+                            if(element.answer === userAnswer){
                                 return(
                                     <button className="chosen" key={'choice-'+index} >
                                         {element.answer}
@@ -125,27 +165,14 @@ class Quiz extends React.Component{
                             
                             
                         }
-                         
+                            
                     })
                     }
 
-
-                    
-
-                    
-                    {/* <button className="choice" onClick={this.handleClick}>
-                        Test 1
-                    </button>
-                    <button className="choice" onClick={this.handleClick}>
-                        Test 2
-                    </button>
-                    <button className="choice" onClick={this.handleClick}>
-                        Test 3
-                    </button> */}
                 </div>
             </div>
-            )}
+        )
+    }
 }
 
-
-export default Quiz
+export default Quiz;

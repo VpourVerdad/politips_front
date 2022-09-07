@@ -20,8 +20,8 @@
 .gallery{
     transition: all 1s;
     display: flex;
-    align-items: center;
-    width: 300%;
+    justify-content: center;
+    text-align: center;
     overflow: hidden;
     
 }
@@ -31,4 +31,5 @@
     min-height: 50rem;
     opacity: 1;
     transition: all .5s;
+    width: 500px;
 }

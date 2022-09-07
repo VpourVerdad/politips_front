@@ -4,33 +4,89 @@ import axios from 'axios'
 export default class ApiFetching {
 
     // récupérer la data de l'api 
-static apiAll () {
- axios.get('http://localhost:8000/api')
- .then((res) => console.log(res.data))
-//  .then((data) => console.log(data))
- .catch((err) => console.log(err))
-}
+  static async apiAll () {
+    const res = await axios.get('https://localhost:8000/api')
+    .catch((err) => console.log(err));
+    return res.data;
+  }
 
     // récupérer les themes 
-static apiTheme () {
-  console.log("coucou"); 
-  axios.get('http://localhost:8000/api/theme')
-  .then((res) => console.log(res.data))
-  .catch((err) => console.log(err))
+  static async apiTheme () {
+    const res = await axios.get('https://localhost:8000/api/theme')
+    .catch((err) => console.log(err));
+    return res.data;
+    }
+
+      // récupérer un theme
+  static async apiThemeId (id) {
+    const res = await axios.get('https://localhost:8000/api/theme/' + id)
+  .catch((err) => console.log(err));
+  return res.data;
   }
 
     // récupérer les categories
-  static apiCategory () {
-    axios.get('http://localhost:8000/api/theme/category')
-    .then((res) => console.log(res.data))
-    .catch((err) => console.log(err))
-    }
+  static async apiCategory () {
+    const res = await axios.get('https://localhost:8000/api/theme/category')
+    .catch((err) => console.log(err));
+    return res.data;
+  }
   
-    // à partir d'un id récupérer le quizz 
-    static apiCategoryId (idQuiz) {
-      axios.get('http://localhost:8000/api/theme/category/' + idQuiz)
-      .then((res) => console.log(res.data))
-      .catch((err) => console.log(err))
-      }
+  // à partir d'un id récupérer une catégorie
+  static async apiCategoryId (id) {
+    const res = await axios.get('https://localhost:8000/api/theme/category/'+id)
+    .catch((err) => console.log(err));
+    return res.data;
+  }
+
+  // à partir d'un id récupérer un quizz
+  static async apiQuiz (id) {
+    const res = await axios.get('https://localhost:8000/api/theme/category/quiz/' + id)
+    .catch((err) => console.log(err));
+    return res.data;
+  }
+
+  // récupérer les résultats d'une question à partir de l'id de la question
+  static async apiResults (id) {
+    const res = await axios.get('https://localhost:8000/api/result/' + id)
+    .catch((err) => console.log(err));
+    return res.data;
+  }
+
+  
+  static string_to_slug (str) {
+    str = str.replace(/^\s+|\s+$/g, ''); // trim
+    str = str.toLowerCase();
+
+    // remove accents, swap ñ for n, etc
+    let from = "àáäâèéëêìíïîòóöôùúüûñç·/_,:;";
+    let to   = "aaaaeeeeiiiioooouuuunc------";
+    for (var i=0, l=from.length ; i<l ; i++) {
+        str = str.replace(new RegExp(from.charAt(i), 'g'), to.charAt(i));
+    }
+
+    str = str.replace(/[^a-z0-9 -]/g, '') // remove invalid chars
+        .replace(/\s+/g, '-') // collapse whitespace and replace by -
+        .replace(/-+/g, '-'); // collapse dashes
+
+    return str;
+  }
+
+  static shuffle(array) {
+    var m = array.length, t, i;
+  
+    // While there remain elements to shuffle…
+    while (m) {
+  
+      // Pick a remaining element…
+      i = Math.floor(Math.random() * m--);
+  
+      // And swap it with the current element.
+      t = array[m];
+      array[m] = array[i];
+      array[i] = t;
+    }
+    
+    return array;
+  }
 
 }

@@ -1,30 +1,28 @@
 import React from "react";
+import {useState , useEffect} from "react";
 import Politique from '../assets/Politique.png'
-import '../styles/Category.css'
+import '../styles/category.css'
 import { Link } from "react-router-dom";
+import ApiFetching from "../ApiFetching";
+import { useLocation } from 'react-router-dom'
 
-class Category extends React.Component{
+const Category = (props) => {
+    
+    const location = useLocation();
+    const [category, setCategory] = useState(location.state.categories);
 
-    constructor(props){
-        super(props); 
-        this.data = [
-            {
-                'name' : "Politique",
-                'image' : Politique
-            }
-        ]
-    }
 
-    render(){
-        return(
+    return(
+        <div className="container-category">
             <div className="grid-category">
-                {this.data.map((element,index) => 
-                <div className ="category-container" style={{ backgroundImage: element.image }}>
-                   <Link to={element.name+"/1"}>{element.name}</Link>
+                {category.map((element,index) =>
+                <div className ="category-item" key={'category-'+element.id} style={{ backgroundImage: element.image }}>
+                    <Link to={ApiFetching.string_to_slug(element.title)+'/'+element.id} state={{ quizzes : element.quizzes }}>{element.title}</Link>
                 </div>
                 )}
             </div>
-            )}
+        </div>
+    )
 
 }
 
