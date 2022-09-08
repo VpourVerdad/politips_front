@@ -2,8 +2,8 @@
 
 ## 📂 Installation projet front:
 
-->Ce projet a été créé avec [Create React App](https://github.com/facebook/create-react-app).<br>
-Pour cloner le projet sur votre machine dans votre terminal utilisez la commande ```Git clone``` suivi du lien ```https://github.com/VpourVerdad/politips_front.git```
+->Ce projet a été développé avec [Create React App](https://github.com/facebook/create-react-app).<br>
+Pour cloner le projet sur votre machine dans votre terminal utilisez la commande  suivante : ```Git clone``` suivi du lien ```https://github.com/VpourVerdad/politips_front.git```
 
 -> Renseignez vos variables d'environnement en créant un fichier ```.env``` à l'aide du .local ```.env.local``` comportant le port du Backend ainsi que la clé d'API.
 -> Ensuite utilisez la commande ```npm i``` afin d'installer toutes les dépendances (composants externes utilisés).<br>
@@ -24,7 +24,7 @@ Installation des Fixtures:
  
  Vous entrez la commande suivantes dans le projet back.
  
- symfony console d:f:l --no-interaction
+ ```symfony console d:f:l --no-interaction```
  
  Pour charger et migrer les fixtures dans la base de donnée. 
 
