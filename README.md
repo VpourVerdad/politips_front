@@ -20,6 +20,13 @@ Renseignez vos variables d'environnement en créant un fichier ```.env``` à l'a
 
 -> Ensuite utilisez la commande ```composer Install``` afin d'installer toutes les dépendances (composants externes utilisés).<br>
 
+Installation des Fixtures: 
+ 
+ Vous entrez la commande suivantes dans le projet back.
+ 
+ symfony console d:f:l --no-interaction
+ 
+ Pour charger et migrer les fixtures dans la base de donnée. 
 
 
 ## 📝 Description :
@@ -42,19 +49,22 @@ https://user-images.githubusercontent.com/95631502/189128890-ba067073-c293-4cee-
 
 Une fois que le théme et la categorie sont ajouté, vous pouvez enter votre premier quiz : 
 
+https://user-images.githubusercontent.com/95631502/189136615-4e24d833-8220-4ad4-9524-85dd7cc30bae.mov
 
+Une fois que vous avez entré le quiz vous aller sur la route "/admin" sut le tableau de bord et vous retrouverai vos quetions. 
+
+<img width="1399" alt="Capture d’écran 2022-09-08 à 15 39 29" src="https://user-images.githubusercontent.com/95631502/189137186-b851240d-1db1-4b0a-addd-2df3e0cd3786.png">
+
+Les choix de vos réponse se trouve dans le liens réponse. 
+
+<img width="1411" alt="Capture d’écran 2022-09-08 à 15 42 09" src="https://user-images.githubusercontent.com/95631502/189137776-01fdf2a7-034e-4988-9f22-dbadc721869e.png">
 
 
 
 ## 👨‍👨‍👦‍👦 Equipe :
 
+Xavier Ristat 
 Hanane Baaziz 
 Fred Rehel
-
-
-
-
-Xavier Ristat 
-
 
 
