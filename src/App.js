@@ -20,6 +20,12 @@ function App() {
 
   useEffect(() => {
     
+    navigator.serviceWorker.onmessage = event => {
+      const message = JSON.parse(event.data);
+      if(message && message.type.includes("/api/")){
+        setData(message.data)
+      }
+    }
       async function fetchData(){
         try {
           setData([...await ApiFetching.apiAll()])
