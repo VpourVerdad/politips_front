@@ -63,8 +63,8 @@ Les choix de vos réponse se trouve dans le liens réponse.
 
 ## 👨‍👨‍👦‍👦 Equipe :
 
-Xavier Ristat 
-Hanane Baaziz 
-Fred Rehel
+Xavier Ristat :collision:
+Hanane Baaziz :punch:
+Fred Rehel :fire: 
 
 
