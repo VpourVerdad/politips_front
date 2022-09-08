@@ -5,7 +5,7 @@
 ->Ce projet a été développé avec [Create React App](https://github.com/facebook/create-react-app).<br>
 Pour cloner le projet sur votre machine, dans le terminal utilisez la commande  suivante : ```Git clone``` suivi du lien ```https://github.com/VpourVerdad/politips_front.git```
 
--> Renseignez vos variables d'environnement en créant un fichier ```.env``` à l'aide du .local ```.env.local``` comportant le port du Backend ainsi que la clé d'API.
+-> Renseigner vos variables d'environnement en créant un fichier ```.env``` à l'aide du .local ```.env.local``` comportant le port du Backend ainsi que la clé d'API.
 -> Ensuite utilisez la commande ```npm i``` afin d'installer toutes les dépendances (composants externes utilisés).<br>
 
 
